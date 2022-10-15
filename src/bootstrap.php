@@ -12,7 +12,7 @@ const DB_CONNECTION_CONFIG = [
     'dbname' => 'doctrine-edge-cases',
 ];
 
-$ormConfiguration = ORMSetup::createAttributeMetadataConfiguration([__DIR__], true);
+$ormConfiguration = ORMSetup::createAttributeMetadataConfiguration([__DIR__], true, dirname(__DIR__) . '/var/cache/doctrine');
 $ormConfiguration->setNamingStrategy(new UnderscoreNamingStrategy());
 
 $entityManager = EntityManager::create(DB_CONNECTION_CONFIG, $ormConfiguration);

@@ -17,7 +17,7 @@ class MemorizingSqlLogger implements SQLLogger
         $this->logger = $logger;
     }
 
-    public function startQuery($sql, ?array $params = null, ?array $types = null)
+    public function startQuery($sql, ?array $params = null, ?array $types = null): void
     {
         $this->queries[] = [
             'sql' => $sql,
@@ -27,7 +27,7 @@ class MemorizingSqlLogger implements SQLLogger
         $this->logger->debug('Executing query: {sql}', ['sql' => $sql, 'params' => $params]);
     }
 
-    public function stopQuery()
+    public function stopQuery(): void
     {
     }
 

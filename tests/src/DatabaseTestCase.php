@@ -9,14 +9,12 @@ use PHPUnit\Framework\TestCase;
 class DatabaseTestCase extends TestCase
 {
 
-    private static Container $container;
+    private static TestContainer $container;
 
     protected function setUp(): void
     {
         parent::setUp();
-
-        $purger = new ORMPurger($this->getEntityManager());
-        $purger->purge();
+        $this->truncateDatabase();
     }
 
     protected function tearDown(): void
@@ -57,12 +55,27 @@ class DatabaseTestCase extends TestCase
             ->setSQLLogger();
     }
 
-    private static function getContainer(): Container
+    private static function getContainer(): TestContainer
     {
         return self::$container;
     }
 
-    public static function setContainer(Container $container): void
+    private function truncateDatabase(): void
+    {
+        $connection = $this->getEntityManager()->getConnection();
+        $connection->executeStatement('SET FOREIGN_KEY_CHECKS = 0;');
+
+        $purger = new ORMPurger($this->getEntityManager());
+        $purger->setPurgeMode(ORMPurger::PURGE_MODE_TRUNCATE);
+        $purger->purge();
+
+        $connection->executeStatement('SET FOREIGN_KEY_CHECKS = 1;');
+    }
+
+    /**
+     * @internal Should be set once during PHPUnit bootstrap
+     */
+    public static function setContainer(TestContainer $container): void
     {
         self::$container = $container;
     }

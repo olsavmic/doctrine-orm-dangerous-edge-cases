@@ -5,7 +5,7 @@ namespace App;
 use Doctrine\ORM\EntityManager;
 use Psr\Log\LoggerInterface;
 
-class Container
+class TestContainer
 {
 
     private EntityManager $entityManager;
@@ -23,7 +23,8 @@ class Container
         return $this->entityManager;
     }
 
-    public function getLogger(): LoggerInterface {
+    public function getLogger(): LoggerInterface
+    {
         return $this->logger;
     }
 

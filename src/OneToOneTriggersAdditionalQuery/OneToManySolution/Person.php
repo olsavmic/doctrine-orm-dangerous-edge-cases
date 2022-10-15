@@ -17,7 +17,7 @@ class Person
     use EntityWithId;
 
     /**
-     * @var Collection<PersonalPreferences>
+     * @var Collection<int,PersonalPreferences>
      */
     #[OneToMany(mappedBy: 'person', targetEntity: PersonalPreferences::class)]
     private Collection $personalPreferences;

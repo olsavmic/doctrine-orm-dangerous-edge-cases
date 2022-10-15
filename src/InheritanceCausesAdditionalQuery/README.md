@@ -1,4 +1,4 @@
-# Beware of Entity Inheritance (Perf issue)
+# Beware of Entity Inheritance (performanceissue)
 ## Problem:
 
 When entity has relation to another entity that is part of Inheritance hierarchy, then loading the owning entity will cause additional query to determine which subclass should be loaded

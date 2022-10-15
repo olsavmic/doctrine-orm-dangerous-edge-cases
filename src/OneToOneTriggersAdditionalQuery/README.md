@@ -1,4 +1,4 @@
-# Avoid `#[OneToOne]` relationships (Perf issue)
+# Avoid `#[OneToOne]` relationships (performanceissue)
 ## Problem:
 
 `#[OneToOne]` relationship always triggers eager load on the inverse side (where the join column is missing)

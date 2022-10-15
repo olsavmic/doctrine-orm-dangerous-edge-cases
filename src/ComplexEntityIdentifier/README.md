@@ -1,4 +1,4 @@
-# Do not introduce complex logic to `$entity->get*EntityIdentifier*` (Perf issue)
+# Do not introduce complex logic to `$entity->get*EntityIdentifier*` (performanceissue)
 
 ## Problem:
 

@@ -1,4 +1,4 @@
-# Private methods do not trigger `\Doctrine\ORM\Proxy->__load` (runtime failure)
+# Private methods do not trigger `\Doctrine\ORM\Proxy->__load` (consistency issue)
 
 ## Problem:
 - When a non-public method/property is accessed on a proxy object and the proxy was not loaded yet, it will fail on `$property must not be accessed before initialization`.

@@ -1,0 +1,26 @@
+version: "3.4"
+
+services:
+  mysql:
+    image: mariadb:10.9
+    ports:
+      - "43306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: doctrine-edge-cases
+
+  app:
+    build: .
+    working_dir: /app
+    user: ${UID:-0}:${GID:-0}
+    depends_on:
+      - mysql
+    volumes:
+      - .:/app
+
+  adminer:
+    image: adminer:latest
+    depends_on:
+      - mysql
+    ports:
+      - "8088:8080"

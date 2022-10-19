@@ -13,6 +13,7 @@ Check `tests` directory for the tests that prove the examples.
 
 ## Additional less known issues without example in this repository
 1. Abstract classes must be part of `#[DiscriminatorMap]` even though they are in the middle of hierarchy (https://github.com/doctrine/orm/issues/9142)
+2. Avoid Collection::matching (https://rnd.shipmonk.com/avoid-using-doctrines-collectionmatching-method)
 
 ## Understanding illustrated issues
 In order to understand the issues, you need to understand how Doctrine works. Most issues are either related to `lib/Doctrine/ORM/UnitOfWork` or generated proxies.

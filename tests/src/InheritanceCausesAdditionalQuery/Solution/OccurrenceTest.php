@@ -37,7 +37,7 @@ class OccurrenceTest extends DatabaseTestCase
         $occurrences = $em->createQueryBuilder()
             ->select('o, l')
             ->from(Occurrence::class, 'o')
-            ->join('o.location', 'l')
+            ->leftJoin('o.location', 'l')
             ->getQuery()
             ->getResult();
 

@@ -77,10 +77,13 @@ class PersonTest extends DatabaseTestCase
 
         $this->enableSqlLogging();
 
+        // This query is not equivalent to the other solutions
+        // as it's not possible to hydrate `pp` on the Person entity as the relation is not defined there
+        // You can still perform the same queries though by specifying the JOIN condition
         $persons = $em->createQueryBuilder()
             ->select('p')
             ->from(Person::class, 'p')
-            ->join(
+            ->leftJoin(
                 PersonalPreferences::class,
                 'pp',
                 Join::WITH,

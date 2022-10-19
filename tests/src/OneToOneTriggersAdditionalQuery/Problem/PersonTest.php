@@ -78,7 +78,7 @@ class PersonTest extends DatabaseTestCase
         $persons = $em->createQueryBuilder()
             ->select('p, pp')
             ->from(Person::class, 'p')
-            ->join('p.personalPreferences', 'pp')
+            ->leftJoin('p.personalPreferences', 'pp')
             ->getQuery()
             ->getResult();
 

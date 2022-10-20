@@ -25,7 +25,7 @@ You need `docker` and `docker compose v2` installed.
 
 ### Test locally
 
-- `printf "UID=$(id -u)\nGID=$(id -g)" > .env`
+- `printf "UID=$(id -u)\nGID=$(id -g)" > .env` (optional, sets up permissions for the shared folders on linux. Requires direnv to apply automatically)
 - `docker compose up -d`
 - `docker compose run -it app bash`
 - `composer install && composer prepare-database`
